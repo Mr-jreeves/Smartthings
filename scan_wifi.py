@@ -7,6 +7,7 @@ from subprocess import Popen, PIPE
 import re   # For Regular Expressions
 import pycurl
 import time
+import sys
 
 #
 # Make sure your URL domain matches how you access Smartthings
@@ -21,8 +22,8 @@ UserInfo = ["User-1","AppID-1","Access-1","IP-1",None], \
            ["User-4","AppID-4","Access-4","IP-4",None]
 
 def main():
-   if UserInfo[0][3] is "IP-1": abort()
-   
+   if UserInfo[0][3] == "IP-1":  sys.exit("Error: Not configured")
+	
 # Reset all Presence Sensors to Away
    for user in UserInfo:
       c = pycurl.Curl()
